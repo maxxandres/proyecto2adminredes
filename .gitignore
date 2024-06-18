@@ -1,0 +1,16 @@
+# Exclude Prestashop cache and logs
+data/prestashop/var/cache/
+data/prestashop/var/logs/
+
+# Exclude database data
+data/prestashop_DB/
+
+# Exclude Docker-related files
+*.log
+*.sock
+
+# Exclude node_modules if you're using Node.js
+node_modules/
+
+# Ignore system files
+.DS_Store

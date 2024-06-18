@@ -1,0 +1,30 @@
+version: '2.27.0-desktop.2'
+
+services:
+  prestashop:
+    image: prestashop/prestashop:latest
+    ports:
+      - "8080:80"
+    environment:
+      - DB_SERVER=db
+      - DB_NAME=prestashop
+      - DB_USER=root
+      - DB_PASS=password
+    volumes:
+      - ./data/prestashop:/var/www/html
+    networks:
+      - prestashop_net
+
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=prestashop
+    volumes:
+      - ./data/prestashop_DB:/var/lib/mysql
+    networks:
+      - prestashop_net
+
+networks:
+  prestashop_net:
+    driver: bridge
